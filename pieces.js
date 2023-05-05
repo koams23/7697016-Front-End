@@ -2,7 +2,9 @@
 const reponse = await fetch ("pieces-autos.json");
 const pieces = await reponse.json();
 
-{const article = pieces [0];
+for (let i = 0; i<pieces.length; i++) {
+const article = pieces [i];
+const pieceElement = document.createElement("article");
 const imageElement = document.createElement ("img");
 imageElement.src = article.image;
 const nomElement = document.createElement("h2");
@@ -17,9 +19,13 @@ const disponibiliteElement = document.createElement ("p");
 disponibiliteElement.innerText = article.disponibilite ? "En stock": "En rupture de stock " ;
 
 const sectionFiches = document.querySelector(".fiches");
-sectionFiches.appendChild(imageElement);
-sectionFiches.appendChild(nomElement);
-sectionFiches.appendChild(prixElement);
-sectionFiches.appendChild(categorieElement);
-sectionFiches.appendChild(descriptionElement);
-sectionFiches.appendChild(disponibiliteElement)}
+sectionFiches.appendChild(pieceElement);
+
+pieceElement.appendChild(imageElement);
+pieceElement.appendChild(nomElement);
+pieceElement.appendChild(prixElement);
+pieceElement.appendChild(categorieElement);
+pieceElement.appendChild(descriptionElement);
+pieceElement.appendChild(disponibiliteElement);
+};
+
