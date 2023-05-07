@@ -28,4 +28,10 @@ pieceElement.appendChild(categorieElement);
 pieceElement.appendChild(descriptionElement);
 pieceElement.appendChild(disponibiliteElement);
 };
-
+const boutonTrier = document.querySelector(".btn-trier");
+boutonTrier.addEventListener("click", function(){
+pieces.sort(function(a, b){
+return a.prix -b.prix;
+}
+    );
+});
