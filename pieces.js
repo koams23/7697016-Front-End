@@ -29,9 +29,20 @@ pieceElement.appendChild(descriptionElement);
 pieceElement.appendChild(disponibiliteElement);
 };
 const boutonTrier = document.querySelector(".btn-trier");
+
 boutonTrier.addEventListener("click", function(){
-pieces.sort(function(a, b){
-return a.prix -b.prix;
-}
-    );
+    const piecesOrdonnees = Array.from(pieces);
+        piecesOrdonnees.sort(function(a, b){
+            return a.prix -b.prix;
+});
+console.log(piecesOrdonnees);
+});
+
+const boutonFiltrer = document.querySelector(".btn-filtrer");
+
+boutonFiltrer.addEventListener("click", function(){
+    const pieceFiltrees = pieces.filter(function(piece) {
+        return piece.prix <= 35;
+    });
+console.log(pieceFiltrees);
 });
