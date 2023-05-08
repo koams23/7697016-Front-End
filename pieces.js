@@ -46,3 +46,22 @@ boutonFiltrer.addEventListener("click", function(){
     });
 console.log(pieceFiltrees);
 });
+
+const boutonTrierDecroissant =document.querySelector(".btn-decroissant");
+
+boutonTrierDecroissant.addEventListener("click",function (){
+    const piecesDecroissant = Array.from(pieces);
+        piecesDecroissant.sort(function(a, b){ 
+            return b.prix -a.prix;
+    });
+    console.log(piecesDecroissant);
+});
+
+const boutonNodesc = document.querySelector(".btn-nodesc");
+
+boutonNodesc.addEventListener("click",function(){
+    const pieceNodesc =pieces.filter(function(piece){
+        return piece.description 
+    });
+    console.log(pieceNodesc);
+});
