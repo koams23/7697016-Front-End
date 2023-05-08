@@ -41,27 +41,34 @@ console.log(piecesOrdonnees);
 const boutonFiltrer = document.querySelector(".btn-filtrer");
 
 boutonFiltrer.addEventListener("click", function(){
-    const pieceFiltrees = pieces.filter(function(piece) {
+    const piecesFiltrees = pieces.filter(function(piece) {
         return piece.prix <= 35;
     });
-console.log(pieceFiltrees);
+console.log(piecesFiltrees);
 });
 
-const boutonTrierDecroissant =document.querySelector(".btn-decroissant");
+const boutonDecroissant =document.querySelector(".btn-decroissant");
 
-boutonTrierDecroissant.addEventListener("click",function (){
-    const piecesDecroissant = Array.from(pieces);
-        piecesDecroissant.sort(function(a, b){ 
+boutonDecroissant.addEventListener("click",function (){
+    const piecesOrdonnees = Array.from(pieces);
+    piecesOrdonnees.sort(function(a, b){ 
             return b.prix -a.prix;
     });
-    console.log(piecesDecroissant);
+    console.log(piecesOrdonnees);
 });
 
-const boutonNodesc = document.querySelector(".btn-nodesc");
+const boutonNodescription = document.querySelector(".btn-nodesc");
 
-boutonNodesc.addEventListener("click",function(){
-    const pieceNodesc =pieces.filter(function(piece){
+boutonNodescription.addEventListener("click",function(){
+    const piecesFiltrees =pieces.filter(function(piece){
         return piece.description 
     });
-    console.log(pieceNodesc);
+    console.log(piecesFiltrees);
 });
+const noms = pieces.map(piece=>piece.nom);
+for (let i = noms.length-1; i>0;  i--) {
+    if (pieces[i].prix>35){
+        noms.splice(i,1)
+    }
+};
+console.log(noms);
