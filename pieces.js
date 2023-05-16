@@ -1,11 +1,14 @@
+import { ajoutListenersAvis } from "./avis.js";
+
 // Récupération des pièces depuis le fichier JSON
-const reponse = await fetch ("pieces-autos.json");
+const reponse = await fetch ("http://localhost:8081/pieces/");
 const pieces = await reponse.json();
 
 
 function genererPieces(pieces) {
     for (let i = 0; i<pieces.length; i++) {
          const article = pieces[i];
+
           // Récupération de l'élément du DOM qui accueillera les fiches
 
         const sectionFiches = document.querySelector(".fiches");
@@ -24,7 +27,12 @@ function genererPieces(pieces) {
         const stockElement = document.createElement("p");
         stockElement.innerText = article.disponibilite ? "En stock" : "En rupture de stock";
 
+        const avisBouton = document.createElement("button");
+        avisBouton.dataset.id = article.id ;
+        avisBouton.textContent = "Afficher les avis ";
+
         
+
         sectionFiches.appendChild(pieceElement);
         
         pieceElement.appendChild(imageElement);
@@ -33,8 +41,13 @@ function genererPieces(pieces) {
         pieceElement.appendChild(categorieElement);
         pieceElement.appendChild(descriptionElement);
         pieceElement.appendChild(stockElement);
+       
 
+        pieceElement.appendChild(avisBouton);
+       
          }
+        
+         ajoutListenersAvis();
 }
 genererPieces(pieces);
 
@@ -236,4 +249,4 @@ inputPrixMax.addEventListener("input", function(){
 //   }
 // }
 
-genererPieces(pieces);
+// genererPieces(pieces);
