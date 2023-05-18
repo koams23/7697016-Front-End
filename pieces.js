@@ -98,7 +98,51 @@ boutonNodescription.addEventListener("click", function(){
     document.querySelector(".fiches").innerHTML = "";
     genererPieces(piecesFiltree);
 });
+// exercice fonction map pour avoir les noms des articles abordables
+const noms = pieces.map(piece=>piece.nom);
+ for(let i= pieces.length -1; i>= 0 ; i--) {
+     if(pieces[i].prix > 35) {
+        noms.splice(i,1);
+     };
+ }
+const abordablesElements =  document.createElement("ul");
+ for (let i = 0; i<noms.length; i++) {
+    const nomElement = document.createElement("li");
+    nomElement.innerText = noms[i];
+    abordablesElements.appendChild(nomElement);
+ }
 
+document.querySelector(".abordables")
+.appendChild(abordablesElements);
+
+
+// Listes des pieces disponible avec leurs prix 
+
+const nomsDisponibles = pieces.map(piece => piece.nom )
+const prixDisponibles = pieces.map(piece => piece.prix)
+
+for (let i = pieces.length -1; i >=0; i--){
+    if (pieces[i].disponibilite === false){
+        nomsDisponibles.splice(i,1);
+        prixDisponibles.splice(i,1);
+    }
+}
+
+const disponiblesElement = document.createElement("ul");
+
+for (let i=0; i < nomsDisponibles.length; i++){
+ const nomElement =  document.createElement("li");
+ nomElement.innerText =`${nomsDisponibles[i]} - ${prixDisponibles[i]} €`
+disponiblesElement.appendChild(nomElement);
+}
+
+const pElementDisponible = document.createElement("p");
+pElementDisponible.innerText = "Pieces disponibles :";
+document.querySelector(".disponibles").appendChild(pElementDisponible).appendChild(disponiblesElement)
+
+
+
+// bouton prix max
 const inputPrixMax = document.querySelector("#prix-max");
 
 inputPrixMax.addEventListener("input", function(){
@@ -108,15 +152,6 @@ inputPrixMax.addEventListener("input", function(){
     document.querySelector(".fiches").innerHTML = "";
     genererPieces(piecesFiltrees)
 });
-
-
-
-
-
-
-
-
-
 
 
 
